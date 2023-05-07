@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ListGroup from "./components/ListGroup";
 import Message from "./components/message";
+import Button from "./components/Button";
 
 type Props = {};
 
@@ -14,17 +15,20 @@ export default function App({}: Props) {
   ];
 
   const [isHidden, setIsHidden] = useState(true);
-  const handleSelectItem = (item: string) => {
-    console.log(item);
-    setIsHidden(!isHidden);
+  const handleClick = () => {
+    setIsHidden(false);
   };
-  // const handlDisplayMessage = (item: string) => {
-  //   return true
-  // }
+
   return (
     <div>
-      <Message isHidden={isHidden}>This is a test!</Message>
-      <ListGroup items={items} heading="Game" onSelectItem={handleSelectItem} />
+      {!isHidden && (
+        <Message closeMessage={() => setIsHidden(true)}>
+          <strong>Holy guacamole!</strong> You should check in on some of those
+          fields below.
+        </Message>
+      )}
+      <ListGroup items={items} heading="Game" />
+      <Button onClick={handleClick}>mybutton</Button>
     </div>
   );
 }

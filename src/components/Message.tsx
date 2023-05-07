@@ -4,16 +4,26 @@ import { ReactNode, useState } from "react";
 
 interface Props {
   //   children: string;
-  isHidden: boolean;
   children: ReactNode;
+  closeMessage: () => void;
 }
 
-const Message = ({ children, isHidden }: Props) => {
+const Message = ({ children, closeMessage }: Props) => {
   //   const [isHidden, setIsHidden] = useState(true);
 
   return (
-    <div className={`alert alert-primary ${isHidden ? "visually-hidden" : ""}`}>
+    <div
+      className="alert alert-warning alert-dismissible fade show"
+      role="alert"
+    >
       {children}
+      <button
+        type="button"
+        className="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+        onClick={closeMessage}
+      ></button>
     </div>
   );
 };

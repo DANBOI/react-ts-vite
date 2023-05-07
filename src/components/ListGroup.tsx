@@ -3,10 +3,10 @@ import { MouseEvent, useState } from "react";
 interface Props {
   items: string[];
   heading: string;
-  onSelectItem: (item: string) => void;
+  // onSelectItem: (item: string) => void;
 }
 
-export default function ListGroup({ items, heading, onSelectItem }: Props) {
+export default function ListGroup({ items, heading }: Props) {
   // const handleClick = (event:MouseEvent)=>{console.log("123")}
   const [SelectedIndex, setSelectedIndex] = useState(-1);
   return (
@@ -20,7 +20,7 @@ export default function ListGroup({ items, heading, onSelectItem }: Props) {
             className={`list-group-item ${SelectedIndex === i ? "active" : ""}`}
             onClick={() => {
               setSelectedIndex(i);
-              onSelectItem(ele);
+              // onSelectItem(ele);
             }}
           >
             {ele}
